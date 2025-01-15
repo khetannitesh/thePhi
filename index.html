@@ -7,373 +7,7 @@
     <!-- Added Favicon -->
     <link rel="icon" type="image/png" href="https://i.imgur.com/al60ZH5.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
-
-        :root {
-            --primary: #386E32;
-            --primary-light: #81C784;
-            --secondary: #ffffff;
-            --dark: rgba(18, 18, 18, 0.95);
-            --dark-secondary: rgba(30, 30, 30, 0.97);
-            --card-bg: rgba(26, 26, 26, 0.95);
-            --text-primary: #ffffff;
-            --text-secondary: #CCCCCC;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            color: var(--text-primary);
-            line-height: 1.6;
-            background-color: var(--dark);
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Modern Navigation */
-        nav {
-            background: rgba(18, 18, 18, 0.5);
-            backdrop-filter: blur(20px);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 80px; /* Fixed height */
-            z-index: 100;
-            border-bottom: 1px solid var(--glass-border);
-            transition: all 0.3s ease;
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 100%; /* Full height of nav */
-        }
-
-        .nav-content .logo {
-            display: flex;
-            align-items: center;
-            height: 100%;
-        }
-
-        .nav-content .logo img {
-            height: 100px; /* Increased size */
-            width: auto;
-            transform: translateY(5px); /* Adjust vertical position */
-            transition: transform 0.3s ease;
-        }
-
-        .nav-content .logo:hover img {
-            transform: translateY(5px) scale(1.05);
-        }
-
-        nav.scrolled {
-            height: 70px; /* Slightly smaller when scrolled */
-        }
-
-        nav.scrolled .nav-content .logo img {
-            height: 90px; /* Slightly smaller logo when scrolled */
-        }
-
-        .logo svg {
-            height: 40px;
-            width: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover svg {
-            transform: scale(1.05);
-        }
-
-        /* Updated Section Heading Styles */
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-family: 'Inter', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .section-title p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            background-image: url('https://i.imgur.com/hqzCAu1.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(18,18,18,0.7), rgba(18,18,18,0.3));
-        }
-
-        .hero-content {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            text-align: center;
-        }
-
-        .hero-content .logo img {
-            height: 400px;
-            margin-bottom: 2rem;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 7rem;
-            color: var(--secondary);
-            margin-top: 2rem;
-            padding: 0 1rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-            animation-delay: 0.5s;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Features Section */
-        .features {
-            background: linear-gradient(to bottom, var(--dark), var(--dark-secondary));
-            padding: 120px 0;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, var(--primary-light) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .card:hover::before {
-            opacity: 0.1;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-
-        .card img {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 2rem;
-            transition: transform 0.4s ease;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .card:hover img {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-light);
-            width: 100%;
-            text-align: center;
-        }
-
-        .card p {
-            text-align: center;
-            width: 100%;
-        }
-
-        /* Team Section */
-        .team {
-            background: var(--dark-secondary);
-            padding: 120px 0;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .team .card img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary-light);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .team .card:hover img {
-            transform: scale(1.05);
-            border-color: var(--primary);
-        }
-
-        /* Waitlist Section */
-        .waitlist {
-            background: linear-gradient(135deg, var(--dark), var(--dark-secondary));
-            padding: 120px 0;
-            text-align: center;
-        }
-
-        /* Updated Form Styles */
-        .email-form {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 3rem auto 0;
-        }
-
-        .email-form .cta-button {
-            min-width: 200px;
-        }
-
-        .email-input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            background: rgba(255,255,255,0.05);
-            color: var(--text-primary);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .email-input:focus {
-            outline: none;
-            border-color: var(--primary-light);
-            background: rgba(255,255,255,0.1);
-        }
-
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-
-            .email-form {
-                flex-direction: column;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <nav>
@@ -381,7 +15,7 @@
             <a href="#" class="logo">
                 <img src="https://i.imgur.com/2s1xayT.png" alt="Qore Logo">
             </a>
-            <a href="https://forms.gle/your-form-id" target="_blank" class="cta-button">Join Waitlist</a>
+            <a href="dietConsultationQuery.html" class="cta-button">Join Waitlist</a>
         </div>
     </nav>
 
@@ -401,11 +35,11 @@
                 <p>Discover how Qore simplifies your health journey with AI-powered tracking and personalized plans.</p>
             </div>
             <div class="features-grid">
-                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <a href="dietConsultationQuery.html" class="card" data-aos="fade-up" data-aos-delay="100">
                     <img src="https://i.imgur.com/jD2bFZx.png" alt="Feature Icon">
                     <h3>Personalized Diet Plans</h3>
                     <p>Tailored meal recommendations based on your unique health metrics.</p>
-                </div>
+                </a>
                 <div class="card" data-aos="fade-up" data-aos-delay="200">
                     <img src="https://i.imgur.com/kDJRnpG.png" alt="Feature Icon">
                     <h3>Vitals & Calorie Tracking</h3>
@@ -419,6 +53,51 @@
             </div>
         </div>
     </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Success Stories</h2>
+                <p>Hear from our community members who have transformed their lives with Qore.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://i.imgur.com/wlfPwSN.jpegg" alt="Anjali R.">
+                    <h3>Mukesh R.</h3>
+                    <div class="rating">
+                        ★★★★★
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="preview">Lost 10kg in 3 months following the personalized diet plan...</p>
+                        <p class="full-text">Lost 10kg in 3 months following the personalized diet plan. The AI recommendations were spot-on, and the support from the team was incredible. Never felt better!</p>
+                    </div>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://i.imgur.com/F1MAXq0.jpeg" alt="Anjali R.">
+                    <h3>Arun L</h3>
+                    <div class="rating">
+                        ★★★★★
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="preview">Gained my confidence back...</p>
+                        <p class="full-text">Lost 10kg in 3 months following the personalized diet plan. The AI recommendations were spot-on, and the support from the team was incredible. Never felt better!</p>
+                    </div>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://i.imgur.com/1wJ7n00.jpeg" alt="Anjali R.">
+                    <h3>Shwetank Sharma</h3>
+                    <div class="rating">
+                        ★★★★
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="preview">Controlled my sugar...</p>
+                        <p class="full-text">Lost 10kg in 3 months following the personalized diet plan. The AI recommendations were spot-on, and the support from the team was incredible. Never felt better!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="team">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
@@ -451,9 +130,7 @@
                 <h2>Join the Future of Health</h2>
                 <p>Be among the first to experience personalized AI-powered health transformation.</p>
             </div>
-            <div class="email-form" data-aos="fade-up" data-aos-delay="100">
-                <a href="https://forms.gle/your-form-id" target="_blank" class="cta-button">Join Waitlist</a>
-            </div>
+            <a href="dietConsultationQuery.html" class="cta-button">Join Waitlist</a>
         </div>
     </section>
 

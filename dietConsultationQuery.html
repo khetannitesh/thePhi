@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consult our Expert Dietician | Phi</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/2s1xayT.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Reuse your existing nav -->
+    <nav>
+        <div class="container nav-content">
+            <a href="/" class="logo">
+                <img src="https://i.imgur.com/2s1xayT.png" alt="Phi Logo">
+            </a>
+            <a href="dietConsultationQuery.html" class="cta-button">Join Waitlist</a>
+        </div>
+    </nav>
+
+    <div class="consultation-hero">
+        <div class="container">
+            <h1 data-aos="fade-up">Consult our Expert Dietician</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <form class="form-container" data-aos="fade-up" action="https://formspree.io/f/mkggevrk" method="POST">
+            <div class="form-group">
+                <label>Name <span class="required">*</span></label>
+                <input type="text" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Email <span class="required">*</span></label>
+                <input type="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" name="phone">
+            </div>
+            
+            <div class="form-group">
+                <label>Your Health Goals</label>
+                <textarea name="goals" rows="4"></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Consultation Request</button>
+            <div class="success-message">Thank you! We'll contact you soon.</div>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Form handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const successMessage = document.querySelector('.success-message');
+            successMessage.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
