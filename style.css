@@ -36,10 +36,12 @@
    }
    
    .container {
-       max-width: 1400px;
-       margin: 0 auto;
-       padding: 0 2rem;
-   }
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 1rem;  /* Reduced from 2rem for better mobile handling */
+        width: 100%;      /* Added to ensure full width containment */
+        box-sizing: border-box; /* Added to include padding in width calculation */
+    }
    
    /* Remove link underlines & default color */
    a {
@@ -657,8 +659,10 @@
     ========================================= */
     .footer {
         background: var(--dark);
-        padding: 4rem 0;  /* Increased padding */
+        padding: 3rem 0;
         border-top: 1px solid var(--glass-border);
+        width: 100%;
+        overflow-x: hidden; /* Prevent horizontal scroll */
     }
     
     .footer-content {
@@ -666,30 +670,6 @@
         justify-content: center;
         align-items: center;
         gap: 3rem;  /* Increased gap */
-    }
-
-    @media (max-width: 768px) {
-        .contact-section {
-            margin: 30px 15px;  /* Added horizontal margin for mobile */
-        }
-        
-        .contact-link {
-            min-width: 140px;
-            font-size: 1rem;
-        }
-        
-        .contact-link img {
-            width: 28px;
-            height: 28px;
-        }
-        
-        .contact-links {
-            gap: 2rem;
-        }
-        
-        .form-container {
-            margin: 30px 15px;  /* Added horizontal margin for mobile */
-        }
     }
 
     /* =========================================
@@ -702,7 +682,7 @@
         padding: 2rem;
         margin: 50px auto;  /* Added margin for better spacing */
         text-align: center;
-        max-width: 800px;  /* Added max-width for better layout */
+        max-width: 900px;  /* Added max-width for better layout */
     }
 
     .contact-section h3 {
@@ -715,7 +695,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 3rem;  /* Increased gap */
+        gap: 2.5rem;
+        flex-wrap: wrap;
+        width: 100%;       /* Added to ensure full width */
+        padding: 0 1rem;   /* Added padding for mobile */
     }
     
     .contact-link {
@@ -739,3 +722,56 @@
         transform: translateY(-2px);
     }
 
+    @media (max-width: 768px) {
+        .contact-links {
+            gap: 1.5rem;
+            justify-content: center;
+            padding: 0;
+        }
+    
+        .contact-link {
+            min-width: 120px;  /* Reduced minimum width on mobile */
+            font-size: 0.95rem;
+        }
+        
+        .contact-section {
+            margin: 30px 1rem;  /* Adjusted margin for mobile */
+            padding: 1.5rem;    /* Reduced padding on mobile */
+        }
+
+        .contact-link img {
+            width: 28px;
+            height: 28px;
+        }
+        
+        .form-container {
+            margin: 30px 15px;  /* Added horizontal margin for mobile */
+        }
+
+        .container {
+            padding: 0 1rem;
+        }
+    
+        .footer-content {
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+    }
+
+
+    @media (max-width: 380px) {
+        .contact-link {
+            min-width: 110px;
+            font-size: 0.9rem;
+        }
+    
+        .contact-links {
+            gap: 1rem;
+        }
+    
+        .contact-link img {
+            width: 22px;
+            height: 22px;
+        }
+    }
